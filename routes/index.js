@@ -1,12 +1,13 @@
 const { Router } = require('express')
 const router = Router()
 
+const {getDeveloperByToken} = require('../controllers/_helpers')
+const {getTalentByToken} = require('../controllers/_helpers')
+
 router.get('/', require('../controllers/api/welcome'))
 
-// Your routes should all be under '/api'
-// router.get('/api/some/collection', require('../some/controller'))
+router.use('/api', getDeveloperByToken, getTalentByToken, require('./api'))
 
-// Or create another route file to handle everything for '/api'
-// router.use('/api', require('./api'))
+
 
 module.exports = router
