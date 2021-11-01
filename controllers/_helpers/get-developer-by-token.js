@@ -15,7 +15,7 @@ module.exports = async function (req, res, next) {
       const currentDate = moment()
       const expireDate = moment(authToken.createdAt).add(7, 'days')
       if (!currentDate.isAfter(expireDate)) {
-        res.locals.currentUser = authToken.User
+        res.locals.currentUser = authToken.Developer
       }
     }
   }
