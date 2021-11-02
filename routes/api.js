@@ -26,8 +26,8 @@ router.get('/talent/applications', require('../controllers/api/talent/applicatio
 router.get('/talent/applications/:ApplicationId', require('../controllers/api/talent/applications/show'))
 
 //TALENT GAMES APPLICATION
-router.post('/talents/games/:GameId/applications', require('../controllers/api/talent/game-applications/create'))
-router.delete('/talents/games/:GameId/applications/:ApplicationId', require('../controllers/api/talent/game-applications/destroy'))
+router.post('/talent/games/:GameId/applications', require('../controllers/api/talent/game-applications/create'))
+router.delete('/talent/games/:GameId/applications/:ApplicationId', require('../controllers/api/talent/game-applications/destroy'))
 
 //PROFILE
 router.put('/my/profile/:id', require('../controllers/api/profile/update'))
