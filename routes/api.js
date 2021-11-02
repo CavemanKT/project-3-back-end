@@ -13,5 +13,23 @@ router.get('/games/:id', require('../controllers/api/public/show'))
 //DEV GAMES
 router.get('/dev/games', require('../controllers/api/dev/index'))
 router.post('/dev/games', require('../controllers/api/dev/create'))
+router.get('/dev/games/:GameId', require('../controllers/api/dev/show'))
+router.put('/dev/games/:GameId', require('../controllers/api/dev/update'))
+router.delete('/dev/games/:GameId', require('../controllers/api/dev/destroy'))
+
+//DEV GAMES APPLICATIONS
+router.get('/dev/games/:GameId/applications',require('../controllers/api/dev/game-applications/index'))
+router.put('/dev/games/:GameId/applications/:ApplicationId', require('../controllers/api/dev/game-applications/update'))
+
+//TALENT APPLICATIONS
+router.get('/talent/applications', require('../controllers/api/talent/applications/index'))
+router.get('/talent/applications/:ApplicationId', require('../controllers/api/talent/applications/show'))
+
+//TALENT GAMES APPLICATION
+router.post('/talents/games/:GameId/applications', require('../controllers/api/talent/game-applications/create'))
+router.delete('/talents/games/:GameId/applications/:ApplicationId', require('../controllers/api/talent/game-applications/destroy'))
+
+//PROFILE
+router.put('/my/profile/:id', require('../controllers/api/profile/update'))
 
 module.exports = router

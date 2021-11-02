@@ -14,7 +14,7 @@ const apiDevGameCreate = async function (req, res) {
   const { locals: { currentUser } } = res
   const { body } = req
 
-  const game = await currentUser.createTodo(body, { fields: permittedFields, include: Game.Images })
+  const game = await currentUser.createGame(body, { fields: permittedFields, include: Game.Images })
   return res.status(200).json({ game })
 }
 
