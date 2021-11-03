@@ -1,10 +1,10 @@
 const { Op } = require('sequelize')
 
 const { Game } = require('../../../models')
-const authenticateCurrentUserByToken = require('../../_helpers/authenticate-current-user-by-token')
+const authenticateDevUserByToken = require('../../_helpers/authenticate-dev-user-by-token')
 
 const apiDevGameIndex = async function (req, res) {
-  const { locals: { currentUser } } = res
+  const { locals: { devUser } } = res
   const { query } = req
 
   const q = query.q || ''
@@ -19,7 +19,7 @@ const apiDevGameIndex = async function (req, res) {
       title: {
         [Op.iLike]: `%${q}%`
       },
-      DeveloperId: currentUser.id
+      DeveloperId: devUser.id
     },
     offset,
     limit,
@@ -30,4 +30,4 @@ const apiDevGameIndex = async function (req, res) {
   return res.status(200).json({ games: result.rows, meta: { totalPages: Math.floor(result.count / limit), currentPage: page } })
 }
 
-module.exports = [authenticateCurrentUserByToken, apiDevGameIndex]
+module.exports = [authenticateDevUserByToken, apiDevGameIndex]

@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const router = Router()
 
+
 // AUTH
 router.post('/auth/signup', require('../controllers/api/auth/signup'))
 router.post('/auth/login', require('../controllers/api/auth/login'))
@@ -13,12 +14,12 @@ router.get('/games/:id', require('../controllers/api/public/show'))
 //DEV GAMES
 router.get('/dev/games', require('../controllers/api/dev/index'))
 router.post('/dev/games', require('../controllers/api/dev/create'))
-router.get('/dev/games/:GameId', require('../controllers/api/dev/show'))
+router.get('/dev/games/:GameId',  require('../controllers/api/dev/show'))
 router.put('/dev/games/:GameId', require('../controllers/api/dev/update'))
-router.delete('/dev/games/:GameId', require('../controllers/api/dev/destroy'))
+router.delete('/dev/games/:GameId',  require('../controllers/api/dev/destroy'))
 
 //DEV GAMES APPLICATIONS
-router.get('/dev/games/:GameId/applications',require('../controllers/api/dev/game-applications/index'))
+router.get('/dev/games/:GameId/applications', require('../controllers/api/dev/game-applications/index'))
 router.put('/dev/games/:GameId/applications/:ApplicationId', require('../controllers/api/dev/game-applications/update'))
 
 //TALENT APPLICATIONS
@@ -30,6 +31,10 @@ router.post('/talent/games/:GameId/applications', require('../controllers/api/ta
 router.delete('/talent/games/:GameId/applications/:ApplicationId', require('../controllers/api/talent/game-applications/destroy'))
 
 //PROFILE
-router.put('/my/profile/:id', require('../controllers/api/profile/update'))
+// router.get('/profile/dev', require('../controllers/api/profile/dev/edit'))
+// router.get('/profile/talent', require('../controllers/api/profile/talent/edit'))
+// router.put('/profile/dev/:id', require('../controllers/api/profile/dev/update'))
+// router.put('/profile/talent/:id', require('../controllers/api/profile/talent/update'))
 
+router.get('/profile/:id', require('../controllers/api/profile/edit'))
 module.exports = router

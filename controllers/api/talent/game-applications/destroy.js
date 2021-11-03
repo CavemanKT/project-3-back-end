@@ -1,4 +1,4 @@
-const authenticateCurrentUserByToken = require('../../../_helpers/authenticate-current-user-by-token')
+const authenticateTalentUserByToken = require('../../../_helpers/authenticate-talent-user-by-token')
 const getTalentGameApplicationById = require('../../../_helpers/get-talent-game-application-by-id')
 
 const apiTalentGameApplicationsDestroy = async function (req, res) {
@@ -9,4 +9,4 @@ const apiTalentGameApplicationsDestroy = async function (req, res) {
   return res.status(204).json()
 }
 
-module.exports = [authenticateCurrentUserByToken, getTalentGameApplicationById, apiTalentGameApplicationsDestroy]
+module.exports = [authenticateTalentUserByToken, getTalentGameApplicationById, apiTalentGameApplicationsDestroy]
