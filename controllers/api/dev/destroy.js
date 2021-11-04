@@ -9,4 +9,4 @@ const apiDevGameDestroy = async function (req, res) {
   return res.status(204).json()
 }
 
-module.exports = [authenticateCurrentUserByToken, getDevGameById, apiDevGameDestroy]
+module.exports = [authenticateCurrentUserByToken('json'), getDevGameById, apiDevGameDestroy]
