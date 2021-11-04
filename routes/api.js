@@ -37,4 +37,6 @@ router.delete('/talent/games/:GameId/applications/:ApplicationId', require('../c
 // router.put('/profile/talent/:id', require('../controllers/api/profile/talent/update'))
 
 router.get('/profile/:id', require('../controllers/api/profile/edit'))
+router.put('/profile/:id', require('../controllers/api/profile/update'))
+
 module.exports = router
