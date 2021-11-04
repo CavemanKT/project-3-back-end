@@ -4,7 +4,7 @@ const { Game } = require('../../../models')
 const authenticateCurrentUserByToken = require('../../_helpers/authenticate-current-user-by-token')
 
 const apiDevGameIndex = async function (req, res) {
-  const { locals: { devUser } } = res
+  const { locals: { currentUser } } = res
   const { query } = req
 
   const q = query.q || ''
@@ -19,7 +19,7 @@ const apiDevGameIndex = async function (req, res) {
       title: {
         [Op.iLike]: `%${q}%`
       },
-      DeveloperId: devUser.id
+      DeveloperId: currentUser.id
     },
     offset,
     limit,

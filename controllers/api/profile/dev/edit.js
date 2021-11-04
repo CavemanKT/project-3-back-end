@@ -1,10 +1,10 @@
 const authenticateDevUserByToken = require('../../../_helpers/authenticate-dev-user-by-token')
 
 const apiDevProfileEdit = async function(req, res) {
-  const {locals: {devUser}} = res
-  console.log('devUser: ', devUser);
+  const {locals: {currentUser}} = res
+  console.log('currentUser: ', currentUser);
 
-  return res.status(200).json({devUser})
+  return res.status(200).json({currentUser})
 }
 
 module.exports = [

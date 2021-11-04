@@ -11,10 +11,12 @@ const permittedFields = ['name', 'description', 'jobDescription', 'qualification
 // ]
 
 const apiDevGameCreate = async function (req, res) {
-  const { locals: { devUser } } = res
-  const { body } = req
+  const { locals: { currentUser } } = res
+  const { body: gameData } = req
 
-  const game = await devUser.createGame(body, { fields: permittedFields, include: Game.Images })
+
+  const game = await currentUser.createGame({...gameData}, { fields: permittedFields, include: Game.Images })
+
   return res.status(200).json({ game })
 }
 
