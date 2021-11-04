@@ -1,4 +1,4 @@
-const authenticateDevUserByToken = require('../../../_helpers/authenticate-dev-user-by-token')
+const authenticateCurrentUserByToken = require('../../../_helpers/authenticate-current-user-by-token')
 const { Application } = require('../../../../models')
 
 const getDevGameApplicationById = require('../../../_helpers/get-dev-game-application-by-id')
@@ -16,7 +16,7 @@ const apiDevGameApplicationsUpdate = async function (req, res) {
 }
 
 module.exports=[
-  authenticateDevUserByToken('json'),
+  authenticateCurrentUserByToken('json'),
   getDevGameApplicationById,
   apiDevGameApplicationsUpdate
 ]

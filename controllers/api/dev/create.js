@@ -1,7 +1,7 @@
 const { body } = require('express-validator')
 
 const { Game } = require('../../../models')
-const authenticateDevUserByToken = require('../../_helpers/authenticate-dev-user-by-token')
+const authenticateCurrentUserByToken = require('../../_helpers/authenticate-current-user-by-token')
 
 const permittedFields = ['name', 'description', 'jobDescription', 'qualification', 'Images.*.url']
 // const validations = [
@@ -18,4 +18,4 @@ const apiDevGameCreate = async function (req, res) {
   return res.status(200).json({ game })
 }
 
-module.exports = [authenticateDevUserByToken, apiDevGameCreate]
+module.exports = [authenticateCurrentUserByToken, apiDevGameCreate]

@@ -1,6 +1,6 @@
 const { body } = require('express-validator')
 const { Application } = require('../../../../models')
-const authenticateTalentUserByToken = require('../../../_helpers/authenticate-talent-user-by-token')
+const authenticateCurrentUserByToken = require('../../../_helpers/authenticate-current-user-by-token')
 const getGameById = require('../../../_helpers/get-game-by-id')
 
 const permittedFields = ['GameId', 'TalentId', 'approved']
@@ -17,7 +17,7 @@ const apiTalentGameApplicationCreate = async function (req, res) {
 }
 
 module.exports= [
-  authenticateTalentUserByToken('json'),
+  authenticateCurrentUserByToken('json'),
   getGameById,
   apiTalentGameApplicationCreate
 ]
