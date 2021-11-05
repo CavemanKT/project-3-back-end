@@ -38,11 +38,6 @@ router.post('/api/talent/games/:GameId/applications', require('./controllers/api
 router.delete('/api/talent/games/:GameId/applications/:ApplicationId', require('./controllers/api/talent/game-applications/destroy'))
 
 //PROFILE
-// router.get('/api/profile/dev', require('./controllers/api/profile/dev/edit'))
-// router.get('/api/profile/talent', require('./controllers/api/profile/talent/edit'))
-// router.put('/api/profile/dev/:id', require('./controllers/api/profile/dev/update'))
-// router.put('/api/profile/talent/:id', require('./controllers/api/profile/talent/update'))
-
 router.get('/api/profile', require('./controllers/api/profile/show'))
 router.put('/api/profile', require('./controllers/api/profile/update'))
 
