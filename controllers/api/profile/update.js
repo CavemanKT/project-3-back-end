@@ -20,10 +20,10 @@ const apiProfileUpdate = async function (req, res) {
 
   await currentUser.reload()
   console.log(currentUser);
-  return res.status(200).json({ game: currentGame })
+  return res.status(200).json({ currentUser: currentUser })
 }
 
 module.exports = [
-  authenticateCurrentUserByToken,
+  authenticateCurrentUserByToken('json'),
   apiProfileUpdate
 ]
