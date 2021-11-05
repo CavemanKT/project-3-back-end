@@ -26,11 +26,11 @@ const apiAuthSignup = async function(req, res) {
   await user.save()
 
   const token = crypto.randomBytes(64).toString('hex')
-  await developer.createAuthenticityToken({ token })
+  await user.createAuthenticityToken({ token })
   req.session.token = token
   req.session.type = type
 
-  res.status(200).json(userSerializer(talent))
+  res.status(200).json(userSerializer(user))
 }
 
 module.exports = [
