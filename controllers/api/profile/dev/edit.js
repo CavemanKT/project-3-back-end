@@ -2,7 +2,6 @@ const authenticateDevUserByToken = require('../../../_helpers/authenticate-dev-u
 
 const apiDevProfileEdit = async function(req, res) {
   const {locals: {currentUser}} = res
-  console.log('currentUser: ', currentUser);
 
   return res.status(200).json({currentUser})
 }

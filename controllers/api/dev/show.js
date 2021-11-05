@@ -7,4 +7,4 @@ const apiDevGameShow = async function (req, res) {
   return res.status(200).json({ game: currentGame })
 }
 
-module.exports = [authenticateCurrentUserByToken, getDevGameById, apiDevGameShow]
+module.exports = [authenticateCurrentUserByToken('json'), getDevGameById, apiDevGameShow]

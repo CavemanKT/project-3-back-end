@@ -16,18 +16,18 @@ const apiDevGameIndex = async function (req, res) {
 
   const result = await Game.findAndCountAll({
     where: {
-      title: {
+      name: {
         [Op.iLike]: `%${q}%`
       },
       DeveloperId: currentUser.id
     },
     offset,
     limit,
-    include: Game.TodoItems,
+    include: Game.Images,
     order: [[sortField, sortOrder]]
   })
 
   return res.status(200).json({ games: result.rows, meta: { totalPages: Math.floor(result.count / limit), currentPage: page } })
 }
 
-module.exports = [authenticateCurrentUserByToken, apiDevGameIndex]
+module.exports = [authenticateCurrentUserByToken('json'), apiDevGameIndex]

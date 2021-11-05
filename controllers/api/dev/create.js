@@ -13,11 +13,11 @@ const permittedFields = ['name', 'description', 'jobDescription', 'qualification
 const apiDevGameCreate = async function (req, res) {
   const { locals: { currentUser } } = res
   const { body: gameData } = req
-
+  console.log(currentUser)
 
   const game = await currentUser.createGame({...gameData}, { fields: permittedFields, include: Game.Images })
 
-  return res.status(200).json({ game })
+  return res.status(200).json({ game, currentUser })
 }
 
-module.exports = [authenticateCurrentUserByToken, apiDevGameCreate]
+module.exports = [authenticateCurrentUserByToken('json'), apiDevGameCreate]

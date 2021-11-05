@@ -9,7 +9,7 @@ router.delete('/auth/logout', require('../controllers/api/auth/logout'))
 
 //PUBLIC
 router.get('/games', require('../controllers/api/public/index'))
-router.get('/games/:id', require('../controllers/api/public/show'))
+router.get('/games/:GameId', require('../controllers/api/public/show'))
 
 //DEV GAMES
 router.get('/dev/games', require('../controllers/api/dev/index'))
