@@ -1,6 +1,6 @@
 const { body } = require('express-validator')
 
-const authenticateCurrentUserByToken = require('../../_helpers/authenticate-current-user-by-token')
+const authenticateCurrentUserByToken = require('../../_helpers/authenticate-dev-by-token')
 
 const permittedFields = {
   currentUser: ['username', 'firstName', 'lastName']
@@ -24,6 +24,6 @@ const apiProfileUpdate = async function (req, res) {
 }
 
 module.exports = [
-  authenticateCurrentUserByToken('json'),
+  authenticateCurrentUserByToken,
   apiProfileUpdate
 ]

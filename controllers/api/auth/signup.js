@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt")
-const { body } = require('express-validator')
+const crypto = require('crypto')
 const {Developer, Talent} = require('../../../models')
 
 const permittedSignupParams = ['username','email', 'passwordHash','type']
@@ -13,25 +13,26 @@ const userSerializer = function(values) {
 const apiAuthSignup = async function(req, res) {
   const { body: userParams } = req
 
-  if (req.body.type === "Marketer") {
-    const talent = await Talent.build(userParams, { attributes: permittedSignupParams })
+  let type = req.body.type === "Marketer" ? 'Talent' : 'Developer'
+  let user = null
 
-    talent.passwordHash = await bcrypt.hash(userParams.password, 10)
-    await talent.save()
-
-    res.status(200).json(userSerializer(talent))
-  }else {
-    const developer = await Developer.build(userParams, { attributes: permittedSignupParams })
-    // Set the passwordHash with the hashed password with 10 rounds of salting
-    developer.passwordHash = await bcrypt.hash(userParams.password, 10)
-    // Saves the user
-    await developer.save()
-
-    res.status(200).json(userSerializer(developer))
+  if (type === 'Talent') {
+    user = await Talent.build(userParams, { attributes: permittedSignupParams })
+  } else {
+    user = await Developer.build(userParams, { attributes: permittedSignupParams })
   }
+
+  user.passwordHash = await bcrypt.hash(userParams.password, 10)
+  await user.save()
+
+  const token = crypto.randomBytes(64).toString('hex')
+  await developer.createAuthenticityToken({ token })
+  req.session.token = token
+  req.session.type = type
+
+  res.status(200).json(userSerializer(talent))
 }
 
 module.exports = [
-  // apiAuthDeveloperSignup,
   apiAuthSignup
 ]

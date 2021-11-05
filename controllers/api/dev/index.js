@@ -1,7 +1,7 @@
 const { Op } = require('sequelize')
 
 const { Game } = require('../../../models')
-const authenticateCurrentUserByToken = require('../../_helpers/authenticate-current-user-by-token')
+const authenticateDevByToken = require('../../_helpers/authenticate-dev-by-token')
 
 const apiDevGameIndex = async function (req, res) {
   const { locals: { currentUser } } = res
@@ -27,7 +27,13 @@ const apiDevGameIndex = async function (req, res) {
     order: [[sortField, sortOrder]]
   })
 
-  return res.status(200).json({ games: result.rows, meta: { totalPages: Math.floor(result.count / limit), currentPage: page } })
+  return res.status(200).json({
+    games: result.rows,
+    meta: { totalPages: Math.floor(result.count / limit), currentPage: page }
+  })
 }
 
-module.exports = [authenticateCurrentUserByToken('json'), apiDevGameIndex]
+module.exports = [
+  authenticateDevByToken,
+  apiDevGameIndex
+]

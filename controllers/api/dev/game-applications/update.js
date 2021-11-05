@@ -1,6 +1,5 @@
-const authenticateCurrentUserByToken = require('../../../_helpers/authenticate-current-user-by-token')
-const { Application } = require('../../../../models')
-
+const authenticateDevByToken = require('../../../_helpers/authenticate-dev-by-token')
+const getDevGameById = require('../../../_helpers/get-dev-game-by-id')
 const getDevGameApplicationById = require('../../../_helpers/get-dev-game-application-by-id')
 
 const permittedFields = {
@@ -16,7 +15,8 @@ const apiDevGameApplicationsUpdate = async function (req, res) {
 }
 
 module.exports=[
-  authenticateCurrentUserByToken('json'),
+  authenticateDevByToken,
+  getDevGameById,
   getDevGameApplicationById,
   apiDevGameApplicationsUpdate
 ]

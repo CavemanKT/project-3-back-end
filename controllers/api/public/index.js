@@ -2,7 +2,6 @@ const { Op } = require("sequelize")
 const { Game} = require('../../../models')
 
 const apiPublicGameIndex = async function (req, res) {
-  const {locals: {currentUser}} = res
   const { query } = req
 
   const q = query.q || ''
@@ -21,7 +20,10 @@ const apiPublicGameIndex = async function (req, res) {
     offset
   })
 
-  return res.status(200).json({ games: results.rows, meta: { totalPages: Math.floor(results.count / limit), currentPage: page } })
+  return res.status(200).json({
+    games: results.rows,
+    meta: { totalPages: Math.floor(results.count / limit), currentPage: page }
+  })
 }
 
 module.exports = [apiPublicGameIndex]

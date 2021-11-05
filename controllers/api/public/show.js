@@ -1,5 +1,4 @@
-const {Game} = require('../../../models')
-const getGameById = require('../../_helpers/get-game-by-id')
+const getPublicGameById = require('../../_helpers/get-public-game-by-id')
 
 const apiPublicGameShow = async function (req, res) {
   const { locals: { currentGame } } = res
@@ -8,6 +7,6 @@ const apiPublicGameShow = async function (req, res) {
 }
 
 module.exports = [
-  getGameById,
+  getPublicGameById,
   apiPublicGameShow
 ]

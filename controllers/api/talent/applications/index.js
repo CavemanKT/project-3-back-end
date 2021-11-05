@@ -1,5 +1,5 @@
 const { Application } = require('../../../../models')
-const authenticateCurrentUserByToken = require('../../../_helpers/authenticate-current-user-by-token')
+const authenticateTalentByToken = require('../../../_helpers/authenticate-talent-by-token')
 
 const apiTalentApplicationsIndex = async function (req, res) {
   const { locals: { currentUser } } = res
@@ -14,6 +14,6 @@ const apiTalentApplicationsIndex = async function (req, res) {
 }
 
 module.exports = [
-  authenticateCurrentUserByToken,
+  authenticateTalentByToken,
   apiTalentApplicationsIndex
 ]
