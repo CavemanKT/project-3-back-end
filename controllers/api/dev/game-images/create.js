@@ -1,7 +1,8 @@
 const MulterParser = require('../../../../services/MulterParser')
 const { body } = require('express-validator')
 
-const authenticateCurrentUserByToken = require('../../../_helpers/authenticate-current-user-by-token')
+const { Image } = require('../../../../models/image')
+const authenticateDevByToken = require('../../../_helpers/authenticate-dev-by-token')
 const getDevGameById = require('../../../_helpers/get-dev-game-by-id')
 // const checkValidation = require('../../../../helpers/check-validation')
 
@@ -12,13 +13,15 @@ const permittedFields = ['url', 'GameId']
 // ]
 
 const apiDevGameImageCreate = async function (req, res) {
-  const { body } = req
+  const { body: { data } } = req
   const { locals: { currentGame } } = res
+  console.log(">>>>>", req.body)
+  console.log(">>>>>", req.file)
 
-  const image = await currentGame.createImage(body, { fields: permittedFields })
+  const image = await currentGame.createImage(data, { fields: permittedFields })
 
-  if (req.files?.['url']?.[0]?.location) {
-    image.url = req.files['url'][0].location
+  if (req?.file?.location) {
+    image.url = req.file.location
   }
 
   await image.save()
@@ -27,4 +30,9 @@ const apiDevGameImageCreate = async function (req, res) {
   return res.status(200).json({ image })
 }
 
-module.exports = [authenticateCurrentUserByToken, getDevGameById, MulterParser.single('url'), apiDevGameImageCreate]
+module.exports = [
+  authenticateDevByToken,
+  getDevGameById,
+  MulterParser.single('data[url]'),
+  apiDevGameImageCreate
+]

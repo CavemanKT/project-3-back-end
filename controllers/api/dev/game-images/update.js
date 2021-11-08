@@ -1,7 +1,7 @@
 const MulterParser = require('../../../../services/MulterParser')
 const { body } = require('express-validator')
 
-const authenticateCurrentUserByToken = require('../../../_helpers/authenticate-current-user-by-token')
+const authenticateDevByToken = require('../../../_helpers/authenticate-dev-by-token')
 const getDevGameById = require('../../../_helpers/get-dev-game-by-id')
 const getImageById = require('../../../_helpers/get-image-by-id')
 // const checkValidation = require('../../../../helpers/check-validation')
@@ -28,4 +28,4 @@ const apiDevGameImageUpdate = async function (req, res) {
   return res.status(200).json({ image: currentImage })
 }
 
-module.exports = [authenticateCurrentUserByToken, getDevGameById, getImageById, MulterParser.single('url'), apiDevGameImageUpdate]
+module.exports = [authenticateDevByToken, getDevGameById, getImageById, MulterParser.single('url'), apiDevGameImageUpdate]

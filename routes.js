@@ -25,6 +25,11 @@ router.get('/api/dev/games/:GameId',  require('./controllers/api/dev/show'))
 router.put('/api/dev/games/:GameId', require('./controllers/api/dev/update'))
 router.delete('/api/dev/games/:GameId',  require('./controllers/api/dev/destroy'))
 
+//DEV GAMES IMAGES
+router.post('/api/dev/games/:GameId/images',require('./controllers/api/dev/game-images/create'))
+router.put('/api/dev/games/:GameId/images/:ImageId', require('./controllers/api/dev/game-images/update'))
+router.delete('/api/dev/games/:GameId/images/:ImageId', require('./controllers/api/dev/game-images/destroy'))
+
 //DEV GAMES APPLICATIONS
 router.get('/api/dev/games/:GameId/applications', require('./controllers/api/dev/game-applications/index'))
 router.put('/api/dev/games/:GameId/applications/:ApplicationId', require('./controllers/api/dev/game-applications/update'))
