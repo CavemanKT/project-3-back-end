@@ -11,7 +11,13 @@ module.exports = {
       GameId: {
         type: Sequelize.INTEGER
       },
-      url: {
+      url1: {
+        type: Sequelize.STRING
+      },
+      url2: {
+        type: Sequelize.STRING
+      },
+      url3: {
         type: Sequelize.STRING
       },
       createdAt: {

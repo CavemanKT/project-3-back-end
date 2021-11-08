@@ -3,7 +3,7 @@
 const { Game } = require('../../../models')
 const authenticateDevByToken = require('../../_helpers/authenticate-dev-by-token')
 
-const permittedFields = ['name', 'description', 'jobDescription', 'qualification', 'Images.*.url']
+const permittedFields = ['name', 'description', 'jobDescription', 'qualification', 'Images.*.url1', 'Images.*.url2', 'Images.*.url3']
 // const validations = [
 //   body('title').default('').notEmpty().withMessage('Title is Required'),
 //   body('Images.*.name').default('').notEmpty().withMessage('Item Name is Required'),
