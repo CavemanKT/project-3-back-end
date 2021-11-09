@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
 
   Image.init({
     GameId: DataTypes.INTEGER,
-    url: DataTypes.STRING
+    url1: DataTypes.STRING,
+    url2: DataTypes.STRING,
+    url3: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Image',
