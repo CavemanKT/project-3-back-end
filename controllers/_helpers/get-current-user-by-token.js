@@ -24,7 +24,6 @@ module.exports = async function (req, res, next) {
     }
   }
 
-  console.log(res.locals.currentUser, res.locals.type);
   if (res.locals.currentUser === undefined) {
     res.locals.currentUser = null
   }

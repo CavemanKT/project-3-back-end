@@ -19,7 +19,6 @@ const apiProfileUpdate = async function (req, res) {
   await currentUser.update(body, { fields: permittedFields.currentUser })
 
   await currentUser.reload()
-  console.log(currentUser);
   return res.status(200).json({ currentUser: currentUser })
 }
 
