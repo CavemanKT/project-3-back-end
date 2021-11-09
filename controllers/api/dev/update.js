@@ -6,7 +6,7 @@ const getDevGameById = require('../../_helpers/get-dev-game-by-id')
 
 const permittedFields = {
   Game: ['name', 'description', 'jobDescription', 'qualification'],
-  Images: ['url']
+  Images: ['url1', 'url2', 'url3']
 }
 
 // const validations = [

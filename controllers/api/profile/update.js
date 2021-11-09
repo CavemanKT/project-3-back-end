@@ -16,6 +16,7 @@ const apiProfileUpdate = async function (req, res) {
   const { body } = req
   const { locals: { currentUser } } = res
 
+  console.log(body, currentUser);
   await currentUser.update(body, { fields: permittedFields.currentUser })
 
   await currentUser.reload()

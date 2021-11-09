@@ -11,7 +11,7 @@ const apiTalentApplicationsIndex = async function (req, res) {
     include: Application.Game,
     order: [['createdAt', 'DESC']],
   })
-
+console.log(applications);
   return res.status(200).json({applications})
 }
 

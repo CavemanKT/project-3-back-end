@@ -6,7 +6,7 @@ const apiPublicGameIndex = async function (req, res) {
 
   const q = query.q || ''
   const page = Number(query.page) || 1
-  const limit = 10
+  const limit = 100
   const offset = (page - 1) * limit
 
   const results = await Game.findAndCountAll({
