@@ -46,4 +46,8 @@ router.delete('/api/talent/games/:GameId/applications', require('./controllers/a
 router.get('/api/profile', require('./controllers/api/profile/show'))
 router.put('/api/profile', require('./controllers/api/profile/update'))
 
+// Approve
+router.get('/api/dev/approve/:GameId', require('./controllers/api/dev/game-applications/getApplicantApproval'))
+router.put('/api/dev/approve/:GameId/:TalentId', require('./controllers/api/dev/game-applications/update'))
+
 module.exports = router
