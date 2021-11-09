@@ -8,7 +8,8 @@ const apiDevGameApplicationsIndex = async function (req, res) {
   const applications = await Application.findAll({
     where: {
       GameId: currentGame.id
-    }
+    },
+    include: Application.Talent
   })
 
   return res.status(200).json({applications})
