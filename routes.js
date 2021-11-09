@@ -31,11 +31,11 @@ router.put('/api/dev/games/:GameId/applications/:ApplicationId', require('./cont
 
 //TALENT APPLICATIONS
 router.get('/api/talent/applications', require('./controllers/api/talent/applications/index'))
-router.get('/api/talent/applications/:ApplicationId', require('./controllers/api/talent/applications/show'))
+router.get('/api/talent/applications/:GameId', require('./controllers/api/talent/applications/show'))
 
 //TALENT GAMES APPLICATION
 router.post('/api/talent/games/:GameId/applications', require('./controllers/api/talent/game-applications/create'))
-router.delete('/api/talent/games/:GameId/applications/:ApplicationId', require('./controllers/api/talent/game-applications/destroy'))
+router.delete('/api/talent/games/:GameId/applications', require('./controllers/api/talent/game-applications/destroy'))
 
 //PROFILE
 router.get('/api/profile', require('./controllers/api/profile/show'))
