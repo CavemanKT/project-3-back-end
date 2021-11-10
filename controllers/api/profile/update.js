@@ -1,9 +1,11 @@
 const { body } = require('express-validator')
 
-const authenticateCurrentUserByToken = require('../../_helpers/authenticate-dev-by-token')
+const authenticateCurrentUserByToken = require('../../_helpers/authenticate-current-user-by-token')
+
 
 const permittedFields = {
-  currentUser: ['username', 'firstName', 'lastName']
+  dev: ['username', 'firstName', 'lastName'],
+  talent: ['username', 'firstName', 'lastName', 'resume']
 }
 
 // const validations = [
@@ -14,10 +16,16 @@ const permittedFields = {
 
 const apiProfileUpdate = async function (req, res) {
   const { body } = req
-  const { locals: { currentUser } } = res
+  const { locals: { currentUser, type } } = res
 
   console.log(body, currentUser);
-  await currentUser.update(body, { fields: permittedFields.currentUser })
+  if(type === "Developer"){
+    await currentUser.update(body, { fields: permittedFields.dev })
+  }
+
+  if(type === "Talent"){
+    await currentUser.update(body, { fields: permittedFields.talent })
+  }
 
   await currentUser.reload()
   return res.status(200).json({ currentUser: currentUser })
