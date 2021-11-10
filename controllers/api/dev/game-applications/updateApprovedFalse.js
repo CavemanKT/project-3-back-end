@@ -6,11 +6,11 @@ const { Application } = require('../../../../models')
 const permittedFields = {
   Application: ['approved']
 }
-const apiDevGameApplicationsUpdate = async function (req, res) {
+const apiDevGameApplicationsUpdateApprovedToFalse = async function (req, res) {
   const { params: { GameId, TalentId} } = req
 
   await Application.update({
-    approved: true
+    approved: false
   }, {
     where: {
       GameId,
@@ -34,5 +34,5 @@ module.exports=[
   authenticateDevByToken,
   getDevGameById,
   // getDevGameApplicationById,
-  apiDevGameApplicationsUpdate
+  apiDevGameApplicationsUpdateApprovedToFalse
 ]

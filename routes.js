@@ -48,6 +48,7 @@ router.put('/api/profile', require('./controllers/api/profile/update'))
 
 // Approve
 router.get('/api/dev/approve/:GameId', require('./controllers/api/dev/game-applications/getApplicantApproval'))
-router.put('/api/dev/approve/:GameId/:TalentId', require('./controllers/api/dev/game-applications/update'))
+router.put('/api/dev/approve/:GameId/:TalentId', require('./controllers/api/dev/game-applications/updateApprovedTrue'))
+router.put('/api/dev/approved/:GameId/:TalentId', require('./controllers/api/dev/game-applications/updateApprovedFalse'))
 
 module.exports = router
