@@ -9,8 +9,6 @@ const permittedFields = {
 const apiDevGameApplicationsUpdate = async function (req, res) {
   const { params: { GameId, TalentId} } = req
 
-  console.log( GameId, TalentId);
-
   const currentApplication = await Application.update({
     approved: true
   }, {

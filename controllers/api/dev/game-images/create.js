@@ -15,8 +15,6 @@ const permittedFields = ['url1', 'url2', 'url3', 'GameId']
 const apiDevGameImageCreate = async function (req, res) {
   const { body: { data }, files: { images } } = req
   const { locals: { currentGame } } = res
-  console.log(">>>>>", req.body)
-  console.log(">>>>>", req.files)
 
   const image = await currentGame.createImage(images, { fields: permittedFields })
 

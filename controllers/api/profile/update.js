@@ -18,7 +18,6 @@ const apiProfileUpdate = async function (req, res) {
   const { body } = req
   const { locals: { currentUser, type } } = res
 
-  console.log(body, currentUser);
   if(type === "Developer"){
     await currentUser.update(body, { fields: permittedFields.dev })
   }

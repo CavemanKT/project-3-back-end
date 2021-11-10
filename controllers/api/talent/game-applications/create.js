@@ -13,14 +13,11 @@ const apiTalentGameApplicationCreate = async function (req, res) {
   const newApplication = await Application.create({
     GameId: currentGame.id,
     TalentId: currentUser.id,
-
   }, {
     fields: permittedFields,
     include: Application.Game
   })
 
-
-  console.log(newApplication.Game)
   return res.status(200).json({ application: newApplication })
 }
 
