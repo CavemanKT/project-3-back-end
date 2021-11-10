@@ -6,11 +6,11 @@ const { Application } = require('../../../../models')
 const permittedFields = {
   Application: ['approved']
 }
-const apiDevGameApplicationsUpdate = async function (req, res) {
+const apiDevGameApplicationsUpdateApprovedToFalse = async function (req, res) {
   const { params: { GameId, TalentId} } = req
 
-  const currentApplication = await Application.update({
-    approved: true
+  await Application.update({
+    approved: false
   }, {
     where: {
       GameId,
@@ -19,6 +19,14 @@ const apiDevGameApplicationsUpdate = async function (req, res) {
     fields: permittedFields.Application
   })
 
+  const currentApplication = await Application.findOne({
+    where: {
+      GameId,
+      TalentId
+    },
+    include: Application.Talent
+  })
+console.log(currentApplication);
   return res.status(200).json({ application: currentApplication })
 }
 
@@ -26,5 +34,5 @@ module.exports=[
   authenticateDevByToken,
   getDevGameById,
   // getDevGameApplicationById,
-  apiDevGameApplicationsUpdate
+  apiDevGameApplicationsUpdateApprovedToFalse
 ]

@@ -32,7 +32,7 @@ router.delete('/api/dev/games/:GameId/images/:ImageId', require('./controllers/a
 
 //DEV GAMES APPLICATIONS
 router.get('/api/dev/games/:GameId/applications', require('./controllers/api/dev/game-applications/index'))
-router.put('/api/dev/games/:GameId/applications/:ApplicationId', require('./controllers/api/dev/game-applications/update'))
+// router.put('/api/dev/games/:GameId/applications/:ApplicationId', require('./controllers/api/dev/game-applications/update'))
 
 //TALENT APPLICATIONS
 router.get('/api/talent/applications', require('./controllers/api/talent/applications/index'))
@@ -48,6 +48,7 @@ router.put('/api/profile', require('./controllers/api/profile/update'))
 
 // Approve
 router.get('/api/dev/approve/:GameId', require('./controllers/api/dev/game-applications/getApplicantApproval'))
-router.put('/api/dev/approve/:GameId/:TalentId', require('./controllers/api/dev/game-applications/update'))
+router.put('/api/dev/approve/:GameId/:TalentId', require('./controllers/api/dev/game-applications/updateApprovedTrue'))
+router.put('/api/dev/approved/:GameId/:TalentId', require('./controllers/api/dev/game-applications/updateApprovedFalse'))
 
 module.exports = router

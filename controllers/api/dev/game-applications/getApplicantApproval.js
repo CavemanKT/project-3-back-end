@@ -6,15 +6,15 @@ const getDevGameById = require('../../../_helpers/get-dev-game-by-id')
 const apiDevGameApplicationsIndex = async function (req, res) {
   const { locals: { currentGame, currentApplication } } = res
 
-console.log(currentApplication);
-  // const application = await Application.findOne({
-  //   where: {
-  //     GameId: currentGame.id
-  //   },
-  //   include: Application.Talent
-  // })
+  const applications = await Application.findAll({
+    where: {
+      GameId: currentGame.id
+    },
+    include: Application.Talent
+  })
+  console.log(applications);
 
-  return res.status(200).json({currentApplication})
+  return res.status(200).json({applications})
 }
 
 module.exports = [
