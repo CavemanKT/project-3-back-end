@@ -32,7 +32,7 @@ router.delete('/api/dev/games/:GameId/images/:ImageId', require('./controllers/a
 
 //DEV GAMES APPLICATIONS
 router.get('/api/dev/games/:GameId/applications', require('./controllers/api/dev/game-applications/index'))
-router.put('/api/dev/games/:GameId/applications/:ApplicationId', require('./controllers/api/dev/game-applications/update'))
+// router.put('/api/dev/games/:GameId/applications/:ApplicationId', require('./controllers/api/dev/game-applications/update'))
 
 //TALENT APPLICATIONS
 router.get('/api/talent/applications', require('./controllers/api/talent/applications/index'))

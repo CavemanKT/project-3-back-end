@@ -11,7 +11,7 @@ const apiDevGameApplicationsIndex = async function (req, res) {
     },
     include: Application.Talent
   })
-
+console.log(applications);
   return res.status(200).json({applications})
 }
 

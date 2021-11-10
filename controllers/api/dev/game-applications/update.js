@@ -9,7 +9,7 @@ const permittedFields = {
 const apiDevGameApplicationsUpdate = async function (req, res) {
   const { params: { GameId, TalentId} } = req
 
-  const currentApplication = await Application.update({
+  await Application.update({
     approved: true
   }, {
     where: {
@@ -19,6 +19,14 @@ const apiDevGameApplicationsUpdate = async function (req, res) {
     fields: permittedFields.Application
   })
 
+  const currentApplication = await Application.findOne({
+    where: {
+      GameId,
+      TalentId
+    },
+    include: Application.Talent
+  })
+console.log(currentApplication);
   return res.status(200).json({ application: currentApplication })
 }
 
