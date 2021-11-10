@@ -21,7 +21,7 @@ const apiTalentGameApplicationCreate = async function (req, res) {
 
 
   console.log(newApplication.Game)
-  return res.status(200).json({ newApplication })
+  return res.status(200).json({ application: newApplication })
 }
 
 module.exports= [

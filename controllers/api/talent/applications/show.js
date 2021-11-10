@@ -9,7 +9,7 @@ const apiTalentApplicationShow = async function (req, res) {
 
 console.log('currentApplication in show page',currentApplication);
 
-  return res.status(200).json({ currentGame: currentGame, currentApplication: currentApplication })
+  return res.status(200).json({ currentGame: currentGame, application: currentApplication })
 }
 
 module.exports = [
