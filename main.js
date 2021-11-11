@@ -48,5 +48,5 @@ app.use('/', router)
 
 // Starts the server
 app.listen(port, () => {
-
+  console.log('http://localhost:3000');
 })

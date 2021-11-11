@@ -2,9 +2,9 @@ module.exports = async function(req, res, next) {
   const { params } = req
   const { locals: { currentGame } } = res
 
-  const ImageId = Number(params.ImageId) || 0
-  const image = await currentGame.getImages({ where: { id: Number(ImageId) } })
-  if (!image[0]) return res.status(404).json({ message: `Image with ID: ${params.id} not found!` })
+  const ImageId = Number(currentGame.Images[0].id) || 0
+  const image = await currentGame.getImages({ where: { id: ImageId } })
+  console.log(image[0]);
 
   res.locals.currentImage = image[0]
 
