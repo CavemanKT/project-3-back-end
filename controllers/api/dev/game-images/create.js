@@ -20,9 +20,9 @@ const apiDevGameImageCreate = async function (req, res) {
 
 
   if (req.files && req.files.length > 0) {
-    image.url1 = req.files[0].location
-    image.url2 = req.files[1].location
-    image.url3 = req.files[2].location
+    image.url1 = req.files?.[0]?.location || null
+    image.url2 = req.files?.[1]?.location || null
+    image.url3 = req.files?.[2]?.location || null
   }
 
   await image.save()

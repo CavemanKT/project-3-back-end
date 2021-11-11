@@ -11,15 +11,17 @@ module.exports = async function (req, res, next) {
       include: [AuthenticityToken.Developer, AuthenticityToken.Talent]
     })
 
-    const currentDate = moment()
-    const expireDate = moment(authToken.createdAt).add(7, 'days')
-    if (!currentDate.isAfter(expireDate)) {
-      res.locals.type = type
+    if (authToken) {
+      const currentDate = moment()
+      const expireDate = moment(authToken.createdAt).add(7, 'days')
+      if (!currentDate.isAfter(expireDate)) {
+        res.locals.type = type
 
-      if (type === 'Developer') {
-        res.locals.currentUser = authToken.Developer
-      } else if (type === 'Talent') {
-        res.locals.currentUser = authToken.Talent
+        if (type === 'Developer') {
+          res.locals.currentUser = authToken.Developer
+        } else if (type === 'Talent') {
+          res.locals.currentUser = authToken.Talent
+        }
       }
     }
   }
