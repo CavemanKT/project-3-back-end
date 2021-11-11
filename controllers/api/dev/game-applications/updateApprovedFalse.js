@@ -26,7 +26,7 @@ const apiDevGameApplicationsUpdateApprovedToFalse = async function (req, res) {
     },
     include: Application.Talent
   })
-console.log(currentApplication);
+
   return res.status(200).json({ application: currentApplication })
 }
 
