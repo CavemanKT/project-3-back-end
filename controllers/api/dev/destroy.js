@@ -1,11 +1,18 @@
 const authenticateDevByToken = require('../../_helpers/authenticate-dev-by-token')
 const getDevGameById = require('../../_helpers/get-dev-game-by-id')
-const getDevGameApplication = require('../../_helpers/get-dev-game-application-by-id')
+const { Application } = require('../../../models')
 
 const apiDevGameDestroy = async function (req, res) {
   const { locals: { currentGame } } = res
-console.log(currentGame);
+  const { params: { GameId } } = req
+
   await currentGame.destroy()
+
+  await Application.destroy({
+    where: {
+      GameId: currentGame.id
+    }
+  })
 
   return res.status(204).json()
 }
