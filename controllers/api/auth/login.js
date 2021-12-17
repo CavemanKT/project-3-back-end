@@ -27,7 +27,7 @@ const apiAuthLogin = async function(req, res) {
     user = await Developer.findOne({ where: { email } })
     type = 'Developer'
   }
-
+  console.log(user);
   const validPassword = await bcrypt.compare(password, user.passwordHash)
   if (!validPassword) return res.status(401).json({ message: 'Credentials is incorrect' })
 
